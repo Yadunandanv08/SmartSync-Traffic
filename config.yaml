@@ -1,0 +1,26 @@
+ #C:\DATASET\coco\train\images
+ 
+ 
+# Path to training data
+train: C:\DATASET\coco\train\images
+
+# Path to validation data
+val: C:\DATASET\coco\valid\images 
+
+# Path to test data
+test: C:\DATASET\coco\test\images  
+
+# Class names
+names:
+  - big bus
+  - big truck
+  - bus(l)
+  - bus(s)
+  - car
+  - mid truck
+  - small bus
+  - small truck
+  - truck(l)
+  - truck(m)
+  - truck(s)
+  - truck(xl)
