@@ -3,8 +3,9 @@ from ultralytics import YOLO
 import numpy as np
 import pandas as pd
 from collections import Counter
+
 model = YOLO("yolov8s.pt")
-coco_txt_path = "C:\\DATASET\\coco\\classes.txt"
+coco_txt_path = "D:\developer\SmartsyncTraffic\SmartSync-Traffic\classes.txt"
 with open(coco_txt_path, "r") as my_file:
     data = my_file.read()
     class_list = data.split("\n")
@@ -22,17 +23,22 @@ def detect_objects(img):
     return object_classes
 
 def count_objects_in_video_frame(video_path):
+    global total,density
     cap = cv2.VideoCapture(video_path)
     success, frame = cap.read()
     if success:
         object_classes = detect_objects(frame)
         counter = Counter(object_classes)
         print("Total Object Count:")
+        total=0
         for obj, count in counter.items():
             print(f"{obj}: {count}")
+            if(f"{obj}"!="person"):
+                total+=count
+        print("total vehicles : ",total)
+        density=total/40
+        return density,total
     else:
         print("Error: Failed to read the first frame from the video.")
     cap.release()
-video_path = r"C:\Users\fahad\Downloads\WhatsApp Video 2024-02-21 at 23.10.58.mp4"
 
-count_objects_in_video_frame(video_path)
