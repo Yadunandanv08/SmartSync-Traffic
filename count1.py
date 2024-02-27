@@ -33,12 +33,15 @@ def count_objects_in_video_frame(video_path):
         total=0
         for obj, count in counter.items():
             print(f"{obj}: {count}")
-            if(f"{obj}"!="person"):
+            if(f"{obj}"=="car"):
                 total+=count
-        print("total vehicles : ",total)
-        density=total/40
-        return density,total
+            if(f"{obj}"=="bus"):
+                total+=count*1.5
+            if(f"{obj}"=="truck"):
+                total+=count*1.5
+            if(f"{obj}"=="motorcycle"):
+                total+=count*0.5
+        return total
     else:
         print("Error: Failed to read the first frame from the video.")
     cap.release()
-

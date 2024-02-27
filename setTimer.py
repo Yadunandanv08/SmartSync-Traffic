@@ -1,7 +1,6 @@
 import math
 from count1 import*
 import time
-import threading
 
 curr=0
 signals =[]
@@ -10,7 +9,7 @@ numberOfSignals=4
 min=10
 max=60
 
-lanes=3
+lanes=2
 
 video_path0 = r"D:\developer\SmartsyncTraffic\SmartSync-Traffic\TRAFFIC TESTCASE 1.mp4"
 video_path1 = r"D:\developer\SmartsyncTraffic\SmartSync-Traffic\TRAFFIC TESTCASE 2 .mp4"
@@ -20,13 +19,12 @@ video_path3 = r"D:\developer\SmartsyncTraffic\SmartSync-Traffic\TRAFFIC TESTCASE
 timelag=2.5
 
 class trafficSignal:
-    def __init__(self,red,yellow,green,min,max) :
+    def __init__(self,red,yellow,green,min,max):
         self.red=red
         self.yellow=yellow
         self.green=green
         self.min=min
         self.max=max
-
 
 def initialize():
     sig1=trafficSignal(0,5,10,10,60)
@@ -37,10 +35,10 @@ def initialize():
     signals.append(sig3)
     sig4=trafficSignal(0,5,10,10,60)
     signals.append(sig4)
-   
+  
 def printTime(greenTime):
     while(signals[(curr+1)%numberOfSignals].green!=0):
-        print("GREEN TIME: ",signals[(curr+1)%numberOfSignals].green)
+        print("GREEN TIME SIGNAL "+str((curr%4)+1)+": ",signals[(curr+1)%numberOfSignals].green)
         signals[(curr+1)%numberOfSignals].green-=1
         time.sleep(1)
     while(signals[(curr+1)%numberOfSignals].yellow!=0):
@@ -55,16 +53,16 @@ def iterate():
     setTimer(video_path3)
     iterate()
 
-
 def setTimer(video_path):
-    global timelag,lanes,curr
-    density,total=count_objects_in_video_frame(video_path)
-    greenSignalTime=math.ceil(timelag*((density*60+total)/(lanes+2)))
+    global timelag,lanes,curr,total
+    total=count_objects_in_video_frame(video_path)
+    greenSignalTime=math.ceil(4+((total*2.5)/(lanes)))
+
     if(greenSignalTime<min):
         greenSignalTime=min
     elif(greenSignalTime>max):
         greenSignalTime=max
- 
+
     signals[(curr+1)%numberOfSignals].green=greenSignalTime
     printTime(signals[(curr+1)%numberOfSignals].green)
     curr=curr+1
