@@ -4,8 +4,8 @@ import numpy as np
 import pandas as pd
 from collections import Counter
 
-model = YOLO("yolov8s.pt")
-coco_txt_path = "D:\developer\SmartsyncTraffic\SmartSync-Traffic\classes.txt"
+model = YOLO("yolov8n.pt")
+coco_txt_path = "C:/Users/fahad/OneDrive/Desktop/SmartSync-Traffic/classes.txt"
 with open(coco_txt_path, "r") as my_file:
     data = my_file.read()
     class_list = data.split("\n")

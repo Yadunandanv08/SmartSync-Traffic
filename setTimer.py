@@ -1,6 +1,9 @@
 import math
-from count1 import*
+from count1 import *
 import time
+from visualize import *
+
+model = YOLO("yolov8n.pt")
 
 curr=0
 signals =[]
@@ -9,12 +12,12 @@ numberOfSignals=4
 min=10
 max=60
 
-lanes=2
+lanes=3
 
-video_path0 = r"D:\developer\SmartsyncTraffic\SmartSync-Traffic\TRAFFIC TESTCASE 1.mp4"
-video_path1 = r"D:\developer\SmartsyncTraffic\SmartSync-Traffic\TRAFFIC TESTCASE 2 .mp4"
-video_path2 = r"D:\developer\SmartsyncTraffic\SmartSync-Traffic\TRAFFIC TESTCASE 3.mp4"
-video_path3 = r"D:\developer\SmartsyncTraffic\SmartSync-Traffic\TRAFFIC TESTCASE 4.mp4"
+video_path0 = r"C:\DATASET2\SmartSync\SmartSync-Traffic\TRAFFIC TESTCASE 1.mp4"
+video_path1 = r"C:\DATASET2\SmartSync\SmartSync-Traffic\TRAFFIC TESTCASE 2.mp4"
+video_path2 = r"C:\DATASET2\SmartSync\SmartSync-Traffic\TRAFFIC TESTCASE 3.mp4"
+video_path3 = r"C:\DATASET2\SmartSync\SmartSync-Traffic\TRAFFIC TESTCASE 4.mp4"
 
 timelag=2.5
 
@@ -55,6 +58,7 @@ def iterate():
 
 def setTimer(video_path):
     global timelag,lanes,curr,total
+    repeat(video_path)
     total=count_objects_in_video_frame(video_path)
     greenSignalTime=math.ceil(4+((total*2.5)/(lanes)))
 
