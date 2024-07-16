@@ -52,8 +52,30 @@ To install SmartSync-Traffic, follow these steps:
  
  The code used here is:
 
-
- 
+ Install YOLOv8:
+   ```sh
+ pip install ultralytics
+   ```
+ Train a Model:
+   ```sh
+ yolo task=detect mode=train model=yolov8n.pt data=coco128.yaml epochs=50 imgsz=640
+   ```
+ Validate a Model:
+   ```sh
+ yolo task=detect mode=val model=yolov8n.pt data=coco128.yaml imgsz=640
+   ```
+ Detect Objects in Images:
+   ```sh
+ yolo task=detect mode=predict model=yolov8n.pt source=data/images
+   ```
+ Export a Model:
+   ```sh
+ yolo export model=yolov8n.pt format=onnx
+   ```
+Resume Training:
+   ```sh
+python train.py --resume path/to/last.pt
+   ```
 ## Environment
    SmartSync-Traffic can be run on various environments. Below are the recommended specifications:
 
