@@ -13,6 +13,10 @@ Utilizing Google Cloud, our YOLO-trained model performs real-time vehicle detect
 images and storing them alongside Green Signal Time (GST) and vehicle counts. This data, stored on Google Cloud,
 facilitates thorough analysis, aiding in traffic prediction and enhancing overall traffic management efficiency.
 
+![Detection of vehicles using yolo](https://github.com/Yadunandanv08/SmartSync-Traffic/blob/main/screenshot2.jpeg?raw=true)
+
+
+
 ## Table of Contents
 
 - [Features](#features)
