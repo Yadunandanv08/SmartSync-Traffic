@@ -127,5 +127,6 @@ SmartSync-Traffic is licensed under the MIT License.
 If you have any questions or suggestions, feel free to reach out to the project maintainers:
 
 Email - merineldos123@gmail.com
+        
 
    
