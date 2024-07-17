@@ -36,6 +36,8 @@ facilitates thorough analysis, aiding in traffic prediction and enhancing overal
 - **User-Friendly Interface:** Provides a graphical user interface for easy monitoring and control.
 - **Scalability:** Designed to handle traffic management for both small towns and large cities.
 
+![The green signal time](https://github.com/Yadunandanv08/SmartSync-Traffic/blob/main/screenshot3.jpeg?raw=true)
+
 ## Installation
 
 To install SmartSync-Traffic, follow these steps:
